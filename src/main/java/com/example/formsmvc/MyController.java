@@ -3,6 +3,7 @@ package com.example.formsmvc;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -20,8 +21,8 @@ public class MyController {
     }
 
     @RequestMapping("viewDetails")
-    public String viewDetails(HttpServletRequest request,Model model) {
-        String empName= request.getParameter("employeeName");
+    public String viewDetails(@RequestParam("employeeName") String empName, Model model) {
+
         empName = "MR." + empName;
         model.addAttribute("nameAttribute",empName);
         return "viewDetails";
